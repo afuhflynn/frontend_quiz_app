@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-pattern-dark: url("./assets/images/pattern-background-desktop-dark.svg");
+  --bg-pattern-light: url("./assets/images/pattern-background-desktop-light.svg");
+}
+
+.container {
+  width: 100dvw;
+  height: 100dvh;
+  min-width: 100dvw;
+  min-height: 100dvh;
+}
+
+.bg-img {
+  @apply bg-pattern-bg-light dark:bg-pattern-bg-dark;
+}
+.input {
+  @apply appearance-none rounded-[999px] bg-primary-purple px-[0.08rem];
+  transition: all 0.4s ease-out;
+}
+::-webkit-slider-thumb {
+  @apply appearance-none h-[20px] w-[20px] rounded-full bg-primary-pure-white;
+}
+
+.italize {
+  font-style: italic;
+}
+
+button,
+input {
+  @apply outline-none;
+}
