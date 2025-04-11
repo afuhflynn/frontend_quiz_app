@@ -1,3 +1,6 @@
+# Node modules
+/node_modules
+
 # Logs
 logs
 *.log
@@ -22,3 +25,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Vite specific files
+vite.config.ts.timestamp-1734872571173-c0d1e8ec236c6.mjs
+vite.config.ts.timestamp-1738107223791-39d3a7e7738d4.mjs
