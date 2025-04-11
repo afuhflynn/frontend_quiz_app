@@ -40,7 +40,7 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [GitHub Repository](https://github.com/afuhflynn/frontend_quiz_app)
+- Solution URL: [GitHub Repository](https://frontend-quiz-app-sandy.vercel.app/)
 - Live Site URL: [Frontend Quiz App on Vercel](https://frontend-quiz-app.vercel.app)
 
 ## My process
