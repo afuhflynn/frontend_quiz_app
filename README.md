@@ -119,8 +119,8 @@ export const useAppStore = create((set) => ({
 Project Created by: **Afuh Flyine Tembeng**
 
 - Website - [AfuhFlynn](https://github.com/afuhflynn)
-- Frontend Mentor - [@afuhflynn](https://www.frontendmentor.io/profile/afuhflynn)
-- Twitter - [@afuhflynn](https://www.twitter.com/afuhflynn)
+- Frontend Mentor - [@afuhflynns](https://www.frontendmentor.io/profile/afuhflynns)
+- Twitter - [@afuhflynn](https://www.twitter.com/flyinn_s)
 
 ## Acknowledgments
 
