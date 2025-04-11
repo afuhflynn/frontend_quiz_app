@@ -1,48 +1,47 @@
-import { useNavigate } from "react-router-dom";
-import Header from "../components/Header";
+import { Link } from "react-router-dom";
 import { navItems } from "../constants/constants";
+import { useAppStore } from "../lib/app.store";
+import { useEffect } from "react";
 
 const HomePage = () => {
-  const navigate = useNavigate();
-  const handleNavigate = (link) => {
-    navigate(link);
-  };
+  const { setQuizSlug, setQuizLogoBgColor, setQuizId } = useAppStore();
+
+  useEffect(() => {
+    setQuizSlug("");
+    setQuizLogoBgColor("");
+  }, [setQuizSlug, setQuizLogoBgColor]);
   return (
-    <div className="flex flex-col items-center justify-between w-full h-full bg-img p-small sm:p-medium md:p-large">
-      <header className="w-full h-[20%] flex flex-row items-start justify-end">
-        <Header />
-      </header>
-      <section className="w-full md:w-[1160px] h-auto md:h-[456px] flex flex-col md:flex-row items-center justify-between">
-        <div className="text-primary-dark-navy dark:text-primary-pure-white w-full md:w-[50%] flex flex-col items-start justify-start gap-[40px] sm:gap-[64px] md:gap-auto py-[4rem]">
-          <div>
-            <h1 className="text-h2">Welcome to the</h1>
-            <h1 className="-mt-5 font-bold text-h2">Frontend Quiz!</h1>
-          </div>
-          <span className="text-lg dark:text-primary-light-bluish text-primary-grey-navy italize">
-            Pick a subject to get started.
-          </span>
+    <div className="w-full h-full gap-14 md:gap-0 grid grid-cols-1 grid-rows-1 md:grid-cols-2 pb-[2rem] md:p-0">
+      <div className="text-primary-dark-navy dark:text-primary-pure-white w-full flex-1 flex flex-col items-start justify-start md:gap-[2.6rem] gap-5">
+        <div className="flex flex-col gap-3 md:gap-0">
+          <h1 className="text-heading-2">Welcome to the</h1>
+          <h1 className="md:text-heading-1 text-[50px] leading-1 font-semibold">
+            Frontend Quiz!
+          </h1>
         </div>
-        <nav className="w-full md:w-[564px] py-[4rem]">
-          <ul className="flex flex-col items-center md:items-end justify-start w-full h-full gap-[24px]">
-            {navItems.map((item, index) => (
-              <button
-                onClick={() => handleNavigate(`/quiz/${item.label}`)}
-                key={`Item-${item.id}-${index}`}
-                className="bg-primary-pure-white dark:bg-primary-navy text-primary-dark-navy dark:text-primary-pure-white w-full md:w-[524px] h-[64px] sm:w-[640px] sm:h-[80px] rounded-[24px] flex flex-row items-center justify-start gap-[32px] p-[20px]"
-              >
-                <div
-                  className={`${item.logoColor} h-[56px] w-[56px] rounded-lg flex flex-row items-center justify-center`}
-                >
-                  <img src={item.logo} alt={item.label} />
-                </div>
-                <span className="uppercase text-[24px] font-bold">
-                  {item.label}
-                </span>
-              </button>
-            ))}
-          </ul>
-        </nav>
-      </section>
+        <span className="text-lg italic text-muted-foreground">
+          Pick a subject to get started.
+        </span>
+      </div>
+      <ul className="flex flex-col items-center md:items-end justify-start w-full h-auto md:gap-[24px] gap-[16px] lg:pl-[6rem] md:pl-[4rem]">
+        {navItems.map((item, index) => (
+          <Link
+            key={`Item-${item.id}-${index}`}
+            to={item.href}
+            onClick={() => setQuizId(item.id)}
+            className="bg-quiz-white dark:bg-quiz-blue w-full h-auto py-[0.8rem] px-4  rounded-2xl flex flex-row items-center justify-start gap-[1.4rem] shadow-md dark:shadow-sm"
+          >
+            <div
+              className={`${item.logoBgColor} h-[48px] w-[48px] rounded-lg flex flex-row items-center justify-center p-2`}
+            >
+              <img src={item.logo} alt={item.label} className="w-full h-full" />
+            </div>
+            <h1 className="uppercase md:text-[20px] text-[20px] font-bold">
+              {item.label}
+            </h1>
+          </Link>
+        ))}
+      </ul>
     </div>
   );
 };

@@ -2,40 +2,240 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  :root {
+    /* Base colors */
+    --background: 0 0% 100%;
+    --foreground: 219 25% 25%;
+    /* #313E51 */
+
+    /* Primary colors */
+    --primary: 277 91% 56%;
+    /* #A729F5 */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors */
+    --secondary: 220 33% 97%;
+    /* #F4F6FA */
+    --secondary-foreground: 219 25% 25%;
+    /* #313E51 */
+
+    /* Muted colors */
+    --muted: 220 33% 97%;
+    /* #F4F6FA */
+    --muted-foreground: 219 16% 35%;
+    /* #4A5567 */
+
+    /* Accent colors */
+    --accent: 215 47% 78%;
+    /* #ABC1E1 */
+    --accent-foreground: 219 25% 25%;
+    /* #313E51 */
+
+    /* Destructive colors */
+    --destructive: 0 82% 63%;
+    /* #EE5454 */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success colors */
+    --success: 151 70% 50%;
+    /* #26D782 */
+    --success-foreground: 0 0% 100%;
+
+    /* Border and UI colors */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 277 91% 56%;
+    /* #A729F5 */
+
+    /* Card colors */
+    --card: 0 0% 100%;
+    --card-foreground: 219 25% 25%;
+    /* #313E51 */
+
+    /* Popover colors */
+    --popover: 0 0% 100%;
+    --popover-foreground: 219 25% 25%;
+    /* #313E51 */
+
+    /* Border radius */
+    --radius: 0.5rem;
+
+    /* Pattern background image */
+    --pattern-background: url("./assets/images/pattern-background-desktop-light.svg");
+  }
+
+  .dark {
+    /* Base colors - dark mode */
+    --background: 219 25% 15%;
+    /* Darker version of #313E51 */
+    --foreground: 220 33% 97%;
+    /* #F4F6FA */
+
+    /* Primary colors - dark mode */
+    --primary: 277 80% 47%;
+    /* #8710E0 - darker purple */
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary colors - dark mode */
+    --secondary: 219 27% 20%;
+    /* Darker version of #3B4D66 */
+    --secondary-foreground: 220 33% 97%;
+    /* #F4F6FA */
+
+    /* Muted colors - dark mode */
+    --muted: 219 27% 25%;
+    /* Slightly lighter than background */
+    --muted-foreground: 215 47% 78%;
+    /* #ABC1E1 */
+
+    /* Accent colors - dark mode */
+    --accent: 215 47% 40%;
+    /* Darker version of #ABC1E1 */
+    --accent-foreground: 220 33% 97%;
+    /* #F4F6FA */
+
+    /* Destructive colors - dark mode */
+    --destructive: 0 70% 53%;
+    /* #D23C3C - darker red */
+    --destructive-foreground: 0 0% 100%;
+
+    /* Success colors - dark mode */
+    --success: 151 70% 40%;
+    /* #1AAC67 - darker green */
+    --success-foreground: 0 0% 100%;
+
+    /* Border and UI colors - dark mode */
+    --border: 219 27% 30%;
+    --input: 219 27% 30%;
+    --ring: 277 80% 47%;
+    /* #8710E0 - darker purple */
+
+    /* Card colors - dark mode */
+    --card: 219 25% 18%;
+    --card-foreground: 220 33% 97%;
+    /* #F4F6FA */
+
+    /* Popover colors - dark mode */
+    --popover: 219 25% 18%;
+    --popover-foreground: 220 33% 97%;
+    /* #F4F6FA */
+
+    /* Pattern background image */
+    --pattern-background: url("./assets/images/pattern-background-desktop-dark.svg");
+  }
 }
 
-:root {
-  --bg-pattern-dark: url("./assets/images/pattern-background-desktop-dark.svg");
-  --bg-pattern-light: url("./assets/images/pattern-background-desktop-light.svg");
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+  }
+
+  /* Typography styles based on the design system */
+  h1.display {
+    @apply text-heading-xl font-medium;
+  }
+
+  h1 {
+    @apply text-heading-1 font-medium;
+  }
+
+  h2 {
+    @apply text-heading-2 font-normal;
+  }
+
+  h3 {
+    @apply text-heading-3 font-medium;
+  }
+
+  h4 {
+    @apply text-heading-4 font-medium;
+  }
+
+  .body-m {
+    @apply text-body-m font-normal leading-relaxed;
+  }
+
+  .body-s {
+    @apply text-body-s font-normal italic leading-relaxed;
+  }
 }
 
-.container {
-  width: 100dvw;
-  height: 100dvh;
-  min-width: 100dvw;
-  min-height: 100dvh;
-}
+/* Custom component styles */
+@layer components {
+  .quiz-button {
+    @apply w-full bg-quiz-purple hover:bg-quiz-purple-light text-white rounded-xl py-6 text-lg font-medium transition-colors;
+  }
 
-.bg-img {
-  @apply bg-pattern-bg-light dark:bg-pattern-bg-dark;
-}
-.input {
-  @apply appearance-none rounded-[999px] bg-primary-purple px-[0.08rem];
-  transition: all 0.4s ease-out;
-}
-::-webkit-slider-thumb {
-  @apply appearance-none h-[20px] w-[20px] rounded-full bg-primary-pure-white;
-}
+  .quiz-button-dark {
+    @apply dark:bg-quiz-purple-dark dark:hover:bg-quiz-purple;
+  }
 
-.italize {
-  font-style: italic;
-}
+  .quiz-option {
+    @apply border border-gray-300 p-4 rounded-xl flex items-center gap-4 transition-colors;
+  }
 
-button,
-input {
-  @apply outline-none;
+  .quiz-option-idle {
+    @apply quiz-option;
+  }
+
+  .quiz-option-hover {
+    @apply quiz-option bg-quiz-gray-light dark:bg-quiz-blue;
+  }
+
+  .quiz-option-active {
+    @apply quiz-option border-quiz-purple dark:border-quiz-purple-dark;
+  }
+
+  .quiz-option-correct {
+    @apply quiz-option border-quiz-green dark:border-quiz-green-dark;
+  }
+
+  .quiz-option-incorrect {
+    @apply quiz-option border-quiz-red dark:border-quiz-red-dark;
+  }
+
+  .quiz-option-icon {
+    @apply w-10 h-10 flex items-center justify-center rounded text-quiz-gray font-medium;
+  }
+
+  .quiz-option-icon-idle {
+    @apply quiz-option-icon bg-quiz-gray-light dark:bg-quiz-blue-light;
+  }
+
+  .quiz-option-icon-active {
+    @apply quiz-option-icon bg-quiz-purple dark:bg-quiz-purple-dark text-white;
+  }
+
+  .quiz-option-icon-correct {
+    @apply quiz-option-icon bg-quiz-green dark:bg-quiz-green-dark text-white;
+  }
+
+  .quiz-option-icon-incorrect {
+    @apply quiz-option-icon bg-quiz-red dark:bg-quiz-red-dark text-white;
+  }
+
+  .theme-toggle-input {
+    @apply appearance-none h-[24px] w-[48px] rounded-full bg-quiz-purple after:text-quiz-white before:text-quiz-white after:bg-quiz-white px-[0.18rem];
+  }
+
+  .theme-toggle-input::-webkit-slider-thumb {
+    @apply appearance-none h-[16px] w-[16px] rounded-full bg-quiz-white;
+  }
+
+  .bg-pattern {
+    background-image: url("./assets/images/icon-moon-dark.svg");
+  }
+
+  .paddingX {
+    @apply lg:px-[6rem] md:px-[3rem] sm:px-[2rem] px-[1rem];
+  }
+
+  .paddingY {
+    @apply lg:py-[4rem] md:py-[2rem] py-[1rem];
+  }
 }
